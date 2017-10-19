@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="smsreports" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="96d2a31e-8e36-4b46-bf9a-7b2bcad113da">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="45"/>
+	<parameter name="studentno" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     s.`fname`,
+     s.`lname`,
+     s.`idnumber`,
+     s.`studentno`,
+     ss.`subjectcode`,
+     ss.`subjectname`,
+     g.`gradename`
+FROM
+     `student` s INNER JOIN `studentacc` sa ON s.`studentno` = sa.`studentno`
+     INNER JOIN `subject` ss ON sa.`gradecode` = ss.`gradecode`
+     INNER JOIN `grade` g ON ss.`gradecode` = g.`gradecode`
+WHERE
+     s.studentno = $P!{studentno}]]>
+	</queryString>
+	<field name="fname" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="lname" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="idnumber" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="studentno" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="subjectcode" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="subjectname" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="gradename" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="106" splitType="Stretch">
+			<staticText>
+				<reportElement x="190" y="60" width="196" height="30" uuid="05bb0307-c8e6-4c79-a837-6a6bbd496531"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Proof of Registration]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="62" uuid="b05b4f9e-b0f8-47d3-a6b2-90503a0c95cf"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="37" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sabane Secondary School]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="144" splitType="Stretch">
+			<staticText>
+				<reportElement x="20" y="10" width="100" height="19" uuid="b54e61e8-e3fe-4bd2-93a1-2d1c845e976d"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Student Number: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="120" y="10" width="100" height="19" uuid="ef5dec69-0be0-4bdd-802a-ee019739e8df"/>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{studentno}]]></textFieldExpression>
+			</textField>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="400" y="10" width="145" height="17" uuid="f9d3d5af-cd0e-4394-9a0b-620a96b1bbed"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="386" y="10" width="40" height="17" uuid="8b15a5e5-a89a-4763-8da6-9d65408fe7c1"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="20" y="40" width="84" height="20" uuid="20dd9bb0-4983-4a9c-bd2b-b43cf7031533"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fname}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="310" y="40" width="84" height="20" uuid="aa56290d-5fb9-410c-a62d-29ccc826b576"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID Number:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="394" y="40" width="151" height="20" uuid="82e64759-4469-4297-8615-7faf6df60510"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{idnumber}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="20" y="70" width="525" height="30" uuid="50f8967a-17da-42fb-b1c6-bbc793586cdd"/>
+				<text><![CDATA[This is to confirm that the mentioned student, has been successfully registered at Sabane Secondary School for the following Grade and Subjects:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="20" y="100" width="180" height="20" uuid="4288447b-93eb-4038-8b80-f7075e763314"/>
+				<textElement>
+					<font fontName="SansSerif" size="13" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{gradename}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="40" width="100" height="20" uuid="542ef777-63b4-462b-97ee-d09c76851130"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lname}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="28" splitType="Stretch">
+			<staticText>
+				<reportElement x="20" y="0" width="100" height="20" uuid="29d08f51-c76e-490c-a5e7-b23b8c77c2fd"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Subject]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="167" y="0" width="100" height="20" uuid="4d7d7fef-1170-45f1-ac73-704534a8d987"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Description]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="380" y="0" width="100" height="20" uuid="cdf9cf2c-2cfb-49c4-8511-83466a7c1f24"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Grade]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<textField>
+				<reportElement x="20" y="0" width="100" height="20" uuid="41ef0160-3559-4e50-b531-760d30a0d47f"/>
+				<textElement>
+					<font size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{subjectcode}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="167" y="0" width="186" height="20" uuid="ab81ad0e-7149-483d-978a-c75daa56b299"/>
+				<textElement>
+					<font size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{subjectname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="380" y="0" width="100" height="20" uuid="76f43dfe-317b-49a0-8ea4-b94f45d07fcf"/>
+				<textElement>
+					<font size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{gradename}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="83396a09-126a-41e2-ba89-af8daff86ada">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT DISTINCT
+     sa.`studentno`,
+     st.`fname`,
+     st.`lname`,
+     s.`subjectname`,
+     sa.`status`
+FROM
+     `studentattend` sa INNER JOIN `attendclass` ac ON sa.`idattend` = ac.`idattend`
+     INNER JOIN `student` st ON sa.`studentno` = st.`studentno`,
+     `subject` s
+WHERE
+     ac.idattend = 10
+     and s.subjectcode = 'LO100']]>
+	</queryString>
+	<field name="studentno" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fname" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="lname" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="subjectname" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="status" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="62" y="12" width="432" height="55" uuid="aaa73f2f-2d8b-471f-bcbf-7d0a424bd072"/>
+				<textElement textAlignment="Justified">
+					<font size="36"/>
+				</textElement>
+				<text><![CDATA[Sabane Secondary School]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="68" splitType="Stretch">
+			<staticText>
+				<reportElement x="172" y="0" width="230" height="43" uuid="30c4960d-05f9-494f-a657-aa1de5c015b9"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Attendance Register]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="62" y="47" width="75" height="20" uuid="05332933-ebe9-41d1-b775-e30a59e17aff"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Date Time:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="137" y="48" width="178" height="20" uuid="d32ed3f9-65d2-4e3d-ac3a-f65e467edf8a"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{last_update}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="315" y="48" width="179" height="20" uuid="fef0c978-7620-49b2-89bc-58b7a00d56b3"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{subjectname}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="137" y="67" width="100" height="21" uuid="bc7946b4-16db-4fc1-886a-e8fe1a38fc80"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[First Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="259" y="67" width="100" height="21" uuid="847c793b-e3f5-461c-85c3-4dcd76e089e8"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Last Name]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="37" splitType="Stretch">
+			<staticText>
+				<reportElement x="37" y="0" width="85" height="21" uuid="39961f6d-7c34-4123-a93f-f4fa62c0d3ed"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Student Number]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="394" y="0" width="100" height="21" uuid="34726bde-5915-4c0a-a314-555b4b3922b9"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Status]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="19" splitType="Stretch">
+			<textField>
+				<reportElement x="37" y="0" width="100" height="20" uuid="25dd0aa5-abd2-4943-a16f-3da0b2a75937"/>
+				<textFieldExpression><![CDATA[$F{studentno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="137" y="0" width="100" height="20" uuid="c3d95332-ec72-4c77-85d9-47ac43f8cd90"/>
+				<textFieldExpression><![CDATA[$F{fname}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="259" y="0" width="100" height="20" uuid="e9c86f47-116a-4a73-98fa-31b393230847"/>
+				<textFieldExpression><![CDATA[$F{lname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="394" y="0" width="100" height="20" uuid="4ace288a-b9d2-493c-9a2c-d1ab2688b069"/>
+				<textFieldExpression><![CDATA[$F{status}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="1" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
